@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>TestApp</title>
+    
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+   <form method="POST">
+       <input type="email" id="email" placeholder="Email"/>
+       <input type="password" id="password" placeholder="Contraseña"/>
+       <input type="submit" id="login" placeholder="Ingresar"/>
+    </form>
+       <script>
+           (function () {
+
+            'use strict';
+
+            const clientId ='90fd2df2-e42b-4a1e-8fb6-7e84ef362817';
+            const clientSecret='gzwYnFxk3QGb6GNkxUQwKKJYOHK1kCGn2pbzVBrJ';
+            const grantType ='password';
+
+            let login = document.getElementById('login');
+
+            login.addEventListener('click',e =>{
+
+                e.preventDefault();
+
+                fetch('http://localhost:8080/rootdevapp/public/oauth/token', {
+                    method:'POST',
+                    //credentials: "same-origin",
+                    body: JSON.stringify({
+                        client_id: clientId,
+                        client_secret: clientSecret,
+                        grant_type: grantType,
+                        username: document.getElementById('email').value,
+                        password: document.getElementById('password').value
+                    }),
+                    headers:{'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                    //"X-Requested-With": "XMLHttpRequest"
+                    },
+                })
+                .then(response =>{
+                    return response.json()
+                })
+                //.then(data => console.log(data))
+               .then(data => {
+                localStorage.setItem('token', data.access_token)
+               })
+                
+
+            
+            });
+               
+           })();
+       </script>
+
+   
+    </body>
+</html>
