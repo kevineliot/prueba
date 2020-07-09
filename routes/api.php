@@ -20,6 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/posts', function() {
-    return App\Post::all();
-});
+Route::middleware('auth:api')->get('/posts' , 'PostController@index');
