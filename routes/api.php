@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
  //   return $request->user();
 //});
 
+   Route::post('/login', 'ApiController@login');
+   Route::post('/register', 'ApiController@register');
+   Route::middleware('auth:api')->post('/logout', 'ApiController@logout');
 
 
-Route::middleware('auth:api')->get('/posts' , 'PostController@index');

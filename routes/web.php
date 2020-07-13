@@ -21,12 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::get('/client','ClientController@index' )->middleware('auth');
-
-Route::get('/info', function () { 
-    $dolar = new App\Pruebax();
-    $dolar-> dinero="10";
-    $dolar-> save();
-    dd(App\Pruebax::all());
-});

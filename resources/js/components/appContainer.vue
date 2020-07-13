@@ -5,7 +5,7 @@
       app
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item to="/dashboard" link>
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
@@ -14,7 +14,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="logout">
+        <v-list-item to="/contact" link >
           <v-list-item-action>
             <v-icon>mdi-email</v-icon>
           </v-list-item-action>
@@ -23,12 +23,12 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link>
+        <v-list-item link @click="logout">
           <v-list-item-action>
             <v-icon>mdi-power</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>log Out</v-list-item-title>
+            <v-list-item-title>log Out </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -49,27 +49,9 @@
         class="fill-height"
         fluid
       >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="text-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
+      
+        <router-view> </router-view>
+
       </v-container>
     </v-main>
     <v-footer
@@ -90,14 +72,27 @@
     data: () => ({
       drawer: null,
     }),
+    
+    currentUser: {
+        get(){
+            return this.$store.state.currentUser.user;
+        }
+    },
 
     methods: {
         logout(){
-            axios.post('/logout')
-            .then( response =>{
-                window.location.href = 'login'
-            })
+            this.$store.dispatch('currentUser/logoutUser');
         }
+    },
+    created(){
+      if(localStorage.hasOwnProperty("blog_token")){
+        axios.defaults.headers.common["Authorization"]="Bearer"+ localStorage.getItem("blog_token");
+       // this.$store.dispatch('currentUser/getUser');
+      }else{
+        window.location.replace("/website/public/login");
+      }
+       
     }
+
   }
 </script>
