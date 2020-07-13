@@ -1,5 +1,6 @@
 <?php
 
+use App\MongoTest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $test = new MongoTest();
+    $test->nombre = "PERRITO";
+    $test->save();
+
+    dd(MongoTest::all());
 });
 
 Auth::routes();
@@ -22,4 +27,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/client','ClientController@index' )->middleware('auth');
+Route::get('/client', 'ClientController@index')->middleware('auth');
