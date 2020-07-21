@@ -20,8 +20,15 @@ use Illuminate\Support\Facades\Route;
 //});
 Auth::routes();
 
-   Route::post('/login', 'ApiController@login');
-   Route::post('/register', 'ApiController@register');
-   Route::middleware('auth:api')->post('/logout', 'ApiController@logout');
+   //Route::post('/login', 'ApiController@login');
+   //Route::post('/register', 'ApiController@register');
+   //Route::middleware('auth:api')->post('/logout', 'ApiController@logout');
+
+   
+      Route::post('/login', 'AuthController@login');
+      Route::post('/register', 'AuthController@register');
+      Route::middleware('auth:api')->get('/all','UserController@index');
+      Route::middleware('auth:api')->get('/current', 'UserController@currentUser');
+   
 
 

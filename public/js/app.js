@@ -96749,7 +96749,7 @@ var getters = {};
 var actions = {
   getUser: function getUser(_ref) {
     var commit = _ref.commit;
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("current").then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/website/public/api/user/current").then(function (response) {
       commit('setUser', response.data);
     });
   },
@@ -96765,13 +96765,29 @@ var actions = {
         localStorage.setItem("blog_token", response.data.access_token);
       }
 
-      window.location.replace("/gitkraken/prueba/public/");
+      window.location.replace("/gitkraken/prueba/public/spa");
+    });
+  },
+  registerUser: function registerUser(_ref3, user) {
+    _objectDestructuringEmpty(_ref3);
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/gitkraken/prueba/public/api/register", {
+      name: user.name,
+      email: user.email,
+      password: user.password
+    }).then(function (response) {
+      //console.log( response.data);
+      if (response.data.access_token) {
+        localStorage.setItem("blog_token", response.data.access_token);
+      }
+
+      window.location.replace("/gitkraken/prueba/public/api/login");
     });
   },
   logoutUser: function logoutUser() {
     //remove token
     localStorage.removeItem("blog_token");
-    window.location.replace("/gitkraken/prueba/public/");
+    window.location.replace("/website/public/api/");
   }
 };
 var mutations = {
