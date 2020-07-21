@@ -25,7 +25,7 @@ const actions = {
                 localStorage.setItem("blog_token",response.data.access_token)
             }
 
-            window.location.replace("/gitkraken/prueba/public/home")
+            window.location.replace("/gitkraken/prueba/public/")
            
         })
     },
@@ -34,7 +34,7 @@ const actions = {
         //remove token
         localStorage.removeItem("blog_token");
 
-        window.location.replace("/gitkraken/prueba/public/login")
+        window.location.replace("/gitkraken/prueba/public/")
     }
 };
 

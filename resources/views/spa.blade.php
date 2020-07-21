@@ -11,6 +11,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>
+        if(!localStorage.hasOwnProperty("blog_token"))
+        {
+     window.location.replace("/gitkraken/prueba/public/");
+        }
+            </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

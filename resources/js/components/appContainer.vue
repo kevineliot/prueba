@@ -50,7 +50,7 @@
         fluid
       >
       
-        <router-view> </router-view>
+  
 
       </v-container>
     </v-main>
@@ -89,7 +89,7 @@
         axios.defaults.headers.common["Authorization"]="Bearer"+ localStorage.getItem("blog_token");
        // this.$store.dispatch('currentUser/getUser');
       }else{
-        window.location.replace("/website/public/login");
+        window.location.replace("/gitkraken/prueba/public/api/login");
       }
        
     }

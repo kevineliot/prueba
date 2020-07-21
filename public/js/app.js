@@ -2030,7 +2030,7 @@ __webpack_require__.r(__webpack_exports__);
     if (localStorage.hasOwnProperty("blog_token")) {
       axios.defaults.headers.common["Authorization"] = "Bearer" + localStorage.getItem("blog_token"); // this.$store.dispatch('currentUser/getUser');
     } else {
-      window.location.replace("/website/public/login");
+      window.location.replace("/gitkraken/prueba/public/api/login");
     }
   }
 });
@@ -40175,12 +40175,10 @@ var render = function() {
       _c(
         "v-main",
         [
-          _c(
-            "v-container",
-            { staticClass: "fill-height", attrs: { fluid: "" } },
-            [_c("router-view")],
-            1
-          )
+          _c("v-container", {
+            staticClass: "fill-height",
+            attrs: { fluid: "" }
+          })
         ],
         1
       ),
@@ -96767,13 +96765,13 @@ var actions = {
         localStorage.setItem("blog_token", response.data.access_token);
       }
 
-      window.location.replace("/gitkraken/prueba/public/home");
+      window.location.replace("/gitkraken/prueba/public/");
     });
   },
   logoutUser: function logoutUser() {
     //remove token
     localStorage.removeItem("blog_token");
-    window.location.replace("/gitkraken/prueba/public/login");
+    window.location.replace("/gitkraken/prueba/public/");
   }
 };
 var mutations = {
