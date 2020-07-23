@@ -7,7 +7,7 @@ const state = {
 const getters ={};
 const actions = {
     getUser({commit}){
-        axios.get("/website/public/api/user/current")
+        axios.get("/gitkraken/prueba/public/api/current")
         .then(response=>{
             commit('setUser', response.data);
         });
@@ -25,7 +25,7 @@ const actions = {
             {
                 localStorage.setItem("blog_token",response.data.access_token)
             }
-            window.location.replace("/gitkraken/prueba/public/spa") 
+            window.location.replace("/gitkraken/prueba/public/home") 
         })
           
     },
@@ -50,7 +50,7 @@ const actions = {
     logoutUser(){
         //remove token
         localStorage.removeItem("blog_token");
-        window.location.replace("/website/public/api/")
+        window.location.replace("/gitkraken/prueba/public/api/login")
     }
 };
 

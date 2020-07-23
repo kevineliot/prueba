@@ -26,6 +26,9 @@ import store from "./store"
 
 Vue.component('login-form', require('./components/loginForm.vue').default);
 Vue.component('app-container', require('./components/appContainer.vue').default);
+Vue.component('register-form', require('./components/RegisterForm.vue').default);
+
+Vue.component('register-form', require('./components/RegisterForm.vue').default);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
